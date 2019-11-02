@@ -77,6 +77,7 @@ def make_data():
         location = elem['location']
         start_time = datetime.time(hour=int(elem['start_time']))
         end_time = datetime.time(hour=int(elem['end_time']))
+        hours = int(elem['end_time']) - int(elem['start_time'])
         dayofweek_list = list(elem['dayofweek'])
 
         lecture_obj = Lecture(
@@ -86,6 +87,7 @@ def make_data():
             location=location,
             start_time=start_time,
             end_time=end_time,
+            hours=hours,
         )
         lecture_obj.save()
 

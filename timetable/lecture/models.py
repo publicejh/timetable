@@ -8,7 +8,9 @@ class Lecture(models.Model):
     location = models.CharField(max_length=32)
     start_time = models.TimeField()
     end_time = models.TimeField()
+    hours = models.IntegerField()
     day = models.ManyToManyField('lecture.DayOfWeek')
+    is_registered = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
