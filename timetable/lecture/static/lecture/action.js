@@ -34,6 +34,7 @@ window.onload = function() {
         $('#modal-lecture-task .lecture-professor span').text(professor);
         $('#modal-lecture-task .lecture-location span').text(location);
         $('#modal-lecture-task #btn-remove-lecture').data('id', id);
+        $('#btn-add-memo').data('id', id);
         $('#modal-lecture-task').modal('show');
     });
 
@@ -41,17 +42,23 @@ window.onload = function() {
         $('[data-toggle="tooltip"]').tooltip();
     });
 
-    $(function () {
-        $('[data-toggle="popover"]').popover({
-            container: 'body',
-            html: true,
-            placement: 'right',
-            sanitize: false,
-            content: function () {
-                return $("#PopoverContent").html();
-            }
-        });
+    // $(function () {
+    //     $('[data-toggle="popover"]').popover({
+    //         container: 'body',
+    //         html: true,
+    //         placement: 'right',
+    //         sanitize: false,
+    //         content: function () {
+    //             // event.preventDefault();
+    //             return $("#PopoverContent").html();
+    //         }
+    //     });
+    // });
+
+    $('#btn-memo').click(function () {
+        $('#modal-memo').modal('show');
     });
+
 
     $('#btn-add-lecture').click(function () {
         let item = $(this);
@@ -70,6 +77,7 @@ window.onload = function() {
     $('#btn-remove-lecture').click(function () {
         let item = $(this);
         let id = item.data("id");
+        // alert(id);
         $.ajax({
           url: 'http://localhost:8003/api/v1/lectures/' + id,
           type: 'PATCH',
@@ -81,4 +89,19 @@ window.onload = function() {
         });
     });
 
+    $('#btn-add-memo').click(function () {
+        let item = $(this);
+        let lecture = item.data("id");
+        let title = $('#recipient-name').val();
+        let content = $('#message-text').val();
+        $.ajax({
+          url: 'http://localhost:8003/api/v1/memos/',
+          type: 'POST',
+          data: "lecture=" + lecture + "&title=" + title + "&content=" + content,
+          success: function(data) {
+            alert('메모를 등록했습니다.');
+            location.reload();
+          }
+        });
+    });
 };
