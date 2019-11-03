@@ -9,6 +9,7 @@ class Lecture(models.Model):
     start_time = models.TimeField()
     end_time = models.TimeField()
     hours = models.IntegerField()
+    description = models.TextField(default='')
     day = models.ManyToManyField('lecture.DayOfWeek')
     is_registered = models.BooleanField(default=False)
 

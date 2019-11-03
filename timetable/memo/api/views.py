@@ -6,3 +6,8 @@ from .serializers import MemoSerializer
 class MemoCreate(generics.CreateAPIView):
     queryset = Memo.objects.all()
     serializer_class = MemoSerializer
+
+
+class MemoDelete(generics.DestroyAPIView):
+    queryset = Memo.objects.all()
+    serializer_class = MemoSerializer

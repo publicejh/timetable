@@ -34,6 +34,7 @@
                             data-code="교과목 코드 : {{ lecture.code }}"
                             data-professor="담당 교수 : {{ lecture.professor }}"
                             data-location="강의실 : {{ lecture.location }}"
+                            data-description="{{ lecture.description }}"
                         >
                             <a class="lecture-title" href="#">{{lecture.name}}</a>
                             <h6 class="lecture-time">
@@ -98,6 +99,9 @@
                                                 data-code="교과목 코드 : {{ lecture.code }}"
                                                 data-professor="담당 교수 : {{ lecture.professor }}"
                                                 data-location="강의실 : {{ lecture.location }}"
+                                                data-description="{{ lecture.description }}"
+                                                data-memos="{{ lecture.memo_set.all }}"
+                                                data-memoids="{{ lecture.memo_set.all.values_list }}"
                                             >
                                                 <div class="lecture-info">
                                                     <h6 class="lecture-title">{{lecture.name}}</h6>
@@ -131,6 +135,9 @@
                                                 data-code="교과목 코드 : {{ lecture.code }}"
                                                 data-professor="담당 교수 : {{ lecture.professor }}"
                                                 data-location="강의실 : {{ lecture.location }}"
+                                                data-description="{{ lecture.description }}"
+                                                data-memos="{{ lecture.memo_set.all }}"
+                                                data-memoids="{{ lecture.memo_set.all.values_list }}"
                                             >
                                                 <div class="lecture-info">
                                                     <h6 class="lecture-title">{{lecture.name}}</h6>
@@ -164,6 +171,9 @@
                                                 data-code="교과목 코드 : {{ lecture.code }}"
                                                 data-professor="담당 교수 : {{ lecture.professor }}"
                                                 data-location="강의실 : {{ lecture.location }}"
+                                                data-description="{{ lecture.description }}"
+                                                data-memos="{{ lecture.memo_set.all }}"
+                                                data-memoids="{{ lecture.memo_set.all.values_list }}"
                                             >
                                                 <div class="lecture-info">
                                                     <h6 class="lecture-title">{{lecture.name}}</h6>
@@ -197,6 +207,9 @@
                                                 data-code="교과목 코드 : {{ lecture.code }}"
                                                 data-professor="담당 교수 : {{ lecture.professor }}"
                                                 data-location="강의실 : {{ lecture.location }}"
+                                                data-description="{{ lecture.description }}"
+                                                data-memos="{{ lecture.memo_set.all }}"
+                                                data-memoids="{{ lecture.memo_set.all.values_list }}"
                                             >
                                                 <div class="lecture-info">
                                                     <h6 class="lecture-title">{{lecture.name}}</h6>
@@ -230,6 +243,9 @@
                                                 data-code="교과목 코드 : {{ lecture.code }}"
                                                 data-professor="담당 교수 : {{ lecture.professor }}"
                                                 data-location="강의실 : {{ lecture.location }}"
+                                                data-description="{{ lecture.description }}"
+                                                data-memos="{{ lecture.memo_set.all }}"
+                                                data-memoids="{{ lecture.memo_set.all.values_list }}"
                                             >
                                                 <div class="lecture-info">
                                                     <h6 class="lecture-title">{{lecture.name}}</h6>
@@ -331,7 +347,7 @@
                         </p>
                     </div>
 
-{#                    <div class="lecture-memo">#}
+                    <div class="lecture-memo">
 {#                        <h5 class="memo-header">메모</h5>#}
 {#                        <ul>#}
 {#                            <li class="memo-list">#}
@@ -344,7 +360,7 @@
 {#                                </div>#}
 {#                            </li>#}
 {#                        </ul>#}
-{#                    </div>#}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div class="left">
