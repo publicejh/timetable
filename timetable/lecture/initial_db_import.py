@@ -55,6 +55,13 @@ def make_data():
     import datetime
     from lecture.models import Lecture, DayOfWeek
 
+    DayOfWeek.objects.create(name='월')
+    DayOfWeek.objects.create(name='화')
+    DayOfWeek.objects.create(name='수')
+    DayOfWeek.objects.create(name='목')
+    DayOfWeek.objects.create(name='금')
+    DayOfWeek.objects.create(name='토')
+
     big_list = []
     temp = RAW_DATA.splitlines()
 
