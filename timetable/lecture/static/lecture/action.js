@@ -70,6 +70,9 @@ window.onload = function() {
           success: function(data) {
             alert('과목을 등록했습니다.');
             location.reload();
+          },
+          error: function (data) {
+            alert('과목을 등록할 수 없습니다. 시간표를 확인하세요!');
           }
         });
     });
@@ -103,5 +106,9 @@ window.onload = function() {
             location.reload();
           }
         });
+    });
+
+    $('#home-title').click(function () {
+        window.location = window.location.pathname;
     });
 };

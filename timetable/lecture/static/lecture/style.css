@@ -5,6 +5,12 @@ ol, ul {
   padding: 0;
   list-style: none; }
 
+.no-lecture {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.0625rem solid #D7E2EB;
+  border-radius: 0.5rem; }
+
 .container-lecture {
   font-size: 0;
   position: relative; }

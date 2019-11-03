@@ -1,9 +1,18 @@
+import requests
 from django.shortcuts import render
 from lecture.models import Lecture
 
 
 def home(request):
     lectures = Lecture.objects.all()
+    search_text = request.GET.get('lecture-search', '')
+    if search_text:
+        searched_lectures = requests.get('http://localhost:8003/api/v1/lectures/?search=' + search_text).json()
+        searched_ids = []
+        for elem in searched_lectures:
+            searched_ids.append(elem['id'])
+        lectures = lectures.filter(pk__in=searched_ids)
+
     registered_lectures = Lecture.objects.filter(is_registered=True)
     mon = []
     tue = []

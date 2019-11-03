@@ -16,36 +16,42 @@
 <body>
     <div class="container-lecture">
         <section class="header">
-            <h3 class="headline">시간표 만들기</h3>
+            <h3 class="headline" id="home-title" style="cursor:pointer;">시간표 만들기</h3>
         </section>
         <section class="section-nav">
-            <form id="search-form" class="form-search">
-                <input type="text" placeholder="강의 검색" class="form-control">
+            <form id="search-form" class="form-search" method="get">
+                <input type="text" placeholder="강의 검색" class="form-control" name="lecture-search">
                 <span><i class="material-icons ic-search">search</i></span>
             </form>
 
             <ul class="list-lecture">
-                {% for lecture in lectures %}
-                    <li class="card-lecture"
-                        data-id="{{ lecture.id }}"
-                        data-name="{{ lecture.name }}"
-                        data-time="강의 시간 : {{lecture.start_time}} - {{lecture.end_time}} | {% for day in lecture.day.all %}({{day}}) {% endfor %}"
-                        data-code="교과목 코드 : {{ lecture.code }}"
-                        data-professor="담당 교수 : {{ lecture.professor }}"
-                        data-location="강의실 : {{ lecture.location }}"
-                    >
-                        <a class="lecture-title" href="#">{{lecture.name}}</a>
-                        <h6 class="lecture-time">
-                            <i class="material-icons ic-lecture-info">access_time</i>
-                            <span>{{lecture.start_time}} - {{lecture.end_time}} | {% for day in lecture.day.all %}({{day}}) {% endfor %}</span>
-                        </h6>
-                        <ul class="list-lecture-info">
-                            <li>교과목 코드 : {{lecture.code}}</li>
-                            <li>담당 교수 : {{lecture.professor}}</li>
-                            <li>강의실 : {{lecture.location}}</li>
-                        </ul>
+                {% if lectures %}
+                    {% for lecture in lectures %}
+                        <li class="card-lecture"
+                            data-id="{{ lecture.id }}"
+                            data-name="{{ lecture.name }}"
+                            data-time="강의 시간 : {{lecture.start_time}} - {{lecture.end_time}} | {% for day in lecture.day.all %}({{day}}) {% endfor %}"
+                            data-code="교과목 코드 : {{ lecture.code }}"
+                            data-professor="담당 교수 : {{ lecture.professor }}"
+                            data-location="강의실 : {{ lecture.location }}"
+                        >
+                            <a class="lecture-title" href="#">{{lecture.name}}</a>
+                            <h6 class="lecture-time">
+                                <i class="material-icons ic-lecture-info">access_time</i>
+                                <span>{{lecture.start_time}} - {{lecture.end_time}} | {% for day in lecture.day.all %}({{day}}) {% endfor %}</span>
+                            </h6>
+                            <ul class="list-lecture-info">
+                                <li>교과목 코드 : {{lecture.code}}</li>
+                                <li>담당 교수 : {{lecture.professor}}</li>
+                                <li>강의실 : {{lecture.location}}</li>
+                            </ul>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li class="no-lecture">
+                        검색 결과가 없습니다.
                     </li>
-                {% endfor %}
+                {% endif %}
             </ul>
         </section>
 
