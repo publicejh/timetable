@@ -457,13 +457,13 @@ ol, ul {
   .table-schedule .lecture-time[data-event="lecture-09"]:before {
     background-color: #5F7F90; }
 
-.table-schedule .lecture-time[data-event="lecture-10"] {
+.table-schedule .lecture-time[data-event="lecture-00"] {
   background: #FBE9E7; }
-  .table-schedule .lecture-time[data-event="lecture-10"] .lecture-title, .table-schedule .lecture-time[data-event="lecture-10"] .lecture-location, .table-schedule .lecture-time[data-event="lecture-10"] .ic-lecture-noti, .table-schedule .lecture-time[data-event="lecture-10"] .lecture-noti-title {
+  .table-schedule .lecture-time[data-event="lecture-00"] .lecture-title, .table-schedule .lecture-time[data-event="lecture-00"] .lecture-location, .table-schedule .lecture-time[data-event="lecture-00"] .ic-lecture-noti, .table-schedule .lecture-time[data-event="lecture-00"] .lecture-noti-title {
     color: #FF5722; }
-  .table-schedule .lecture-time[data-event="lecture-10"]:hover {
+  .table-schedule .lecture-time[data-event="lecture-00"]:hover {
     background-color: #FFCCBC; }
-  .table-schedule .lecture-time[data-event="lecture-10"]:before {
+  .table-schedule .lecture-time[data-event="lecture-00"]:before {
     background-color: #FF5722; }
 
 .modal-header {

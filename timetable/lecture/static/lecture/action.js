@@ -14,6 +14,7 @@ window.onload = function() {
         $('#modal-lecture-info .lecture-code span').text(code);
         $('#modal-lecture-info .lecture-professor span').text(professor);
         $('#modal-lecture-info .lecture-location span').text(location);
+        $('#modal-lecture-info #btn-add-lecture').data('id', id);
         $('#modal-lecture-info').modal('show');
     });
 
@@ -32,6 +33,7 @@ window.onload = function() {
         $('#modal-lecture-task .lecture-code span').text(code);
         $('#modal-lecture-task .lecture-professor span').text(professor);
         $('#modal-lecture-task .lecture-location span').text(location);
+        $('#modal-lecture-task #btn-remove-lecture').data('id', id);
         $('#modal-lecture-task').modal('show');
     });
 
@@ -50,4 +52,33 @@ window.onload = function() {
             }
         });
     });
+
+    $('#btn-add-lecture').click(function () {
+        let item = $(this);
+        let id = item.data("id");
+        $.ajax({
+          url: 'http://localhost:8003/api/v1/lectures/' + id,
+          type: 'PATCH',
+          data: "is_registered=true",
+          success: function(data) {
+            alert('과목을 등록했습니다.');
+            location.reload();
+          }
+        });
+    });
+
+    $('#btn-remove-lecture').click(function () {
+        let item = $(this);
+        let id = item.data("id");
+        $.ajax({
+          url: 'http://localhost:8003/api/v1/lectures/' + id,
+          type: 'PATCH',
+          data: "is_registered=false",
+          success: function(data) {
+            alert('과목을 제외했습니다.');
+            location.reload();
+          }
+        });
+    });
+
 };

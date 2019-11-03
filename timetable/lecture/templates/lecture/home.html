@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'lecture/style.css' %}" />
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{% static 'lecture/action.js' %}"></script>
@@ -83,7 +84,7 @@
                                 </div>
                                 <ul>
                                     {% for lecture in mon_lectures %}
-                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id }}">
+                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id|modulo:10 }}">
                                             <a href="#"
                                                 data-id="{{ lecture.id }}"
                                                 data-name="{{ lecture.name }}"
@@ -116,7 +117,7 @@
                                 </div>
                                 <ul>
                                     {% for lecture in tue_lectures %}
-                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id }}">
+                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id|modulo:10 }}">
                                             <a href="#"
                                                 data-id="{{ lecture.id }}"
                                                 data-name="{{ lecture.name }}"
@@ -149,7 +150,7 @@
                                 </div>
                                 <ul>
                                     {% for lecture in wed_lectures %}
-                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id }}">
+                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id|modulo:10 }}">
                                             <a href="#"
                                                 data-id="{{ lecture.id }}"
                                                 data-name="{{ lecture.name }}"
@@ -182,7 +183,7 @@
                                 </div>
                                 <ul>
                                     {% for lecture in thu_lectures %}
-                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id }}">
+                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id|modulo:10 }}">
                                             <a href="#"
                                                 data-id="{{ lecture.id }}"
                                                 data-name="{{ lecture.name }}"
@@ -215,7 +216,7 @@
                                 </div>
                                 <ul>
                                     {% for lecture in fri_lectures %}
-                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id }}">
+                                        <li class="lecture-time {% if lecture.hours == 2 %}two{% endif %}-hr hr-{{lecture.start_time.hour}}" data-event="lecture-0{{ lecture.id|modulo:10 }}">
                                             <a href="#"
                                                 data-id="{{ lecture.id }}"
                                                 data-name="{{ lecture.name }}"
@@ -284,7 +285,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary">과목 등록하기</button>
+                    <button type="button" class="btn btn-primary" id="btn-add-lecture" data-id="1">과목 등록하기</button>
                 </div>
             </div>
         </div>
@@ -348,7 +349,7 @@
                     </div>
                     <div class="right">
                         <button type="button" class="btn btn-light" data-dismiss="modal">확인</button>
-                        <button type="button" class="btn btn-danger" >과목 삭제하기</button>
+                        <button type="button" class="btn btn-danger" id="btn-remove-lecture" data-id="1">과목 삭제하기</button>
                     </div>
                 </div>
             </div>
