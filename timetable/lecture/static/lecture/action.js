@@ -114,7 +114,7 @@ window.onload = function() {
         let item = $(this);
         let id = item.data("id");
         $.ajax({
-          url: 'http://localhost:8003/api/v1/lectures/' + id,
+          url: 'http://localhost:8000/api/v1/lectures/' + id,
           type: 'PATCH',
           data: "is_registered=true",
           success: function(data) {
@@ -132,7 +132,7 @@ window.onload = function() {
         let id = item.data("id");
         // alert(id);
         $.ajax({
-          url: 'http://localhost:8003/api/v1/lectures/' + id,
+          url: 'http://localhost:8000/api/v1/lectures/' + id,
           type: 'PATCH',
           data: "is_registered=false",
           success: function(data) {
@@ -148,7 +148,7 @@ window.onload = function() {
         let title = $('#recipient-name').val();
         let content = $('#message-text').val();
         $.ajax({
-          url: 'http://localhost:8003/api/v1/memos/',
+          url: 'http://localhost:8000/api/v1/memos/',
           type: 'POST',
           data: "lecture=" + lecture + "&title=" + title + "&content=" + content,
           success: function(data) {
@@ -162,7 +162,7 @@ window.onload = function() {
         let item = $(this);
         let id = item.data("id");
         $.ajax({
-          url: 'http://localhost:8003/api/v1/memos/' + id,
+          url: 'http://localhost:8000/api/v1/memos/' + id,
           type: 'DELETE',
           success: function(data) {
             alert('메모를 삭제했습니다.');
